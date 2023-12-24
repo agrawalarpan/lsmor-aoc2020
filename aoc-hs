@@ -1,6 +1,6 @@
 #!/bin/bash
 
-YEAR=2023
+YEAR=2020
 AOC_BASE_URL="https://adventofcode.com/$YEAR/"
 
 # Function to create a new Advent of Code solution for a given day
@@ -23,7 +23,6 @@ create_new_solution() {
   module_template="module Main where
 
 import System.Environment (getArgs)
-import Data.ByteString qualified as B
 
 {- Types for your input and your solution
 
@@ -31,13 +30,13 @@ import Data.ByteString qualified as B
 - Solution should be the type of your solution. Typically is an Int, but It can be other things, like a list of numbers
          or a list of characters
 -}
-type Input    = B.ByteString  -- default to Bytestring, but very likely you'll need to change it
+type Input    = String  -- default to Bytestring, but very likely you'll need to change it
 type Solution = Int
 
 -- | parser transforms a raw bytestring (from your ./input/day-X.input) to your Input type. 
 --   this is intended to use attoparsec for such a transformation. You can use Prelude's 
 --   String if it fit better for the problem
-parser :: B.ByteString -> Input
+parser :: String -> Input
 parser = undefined
 
 -- | The function which calculates the solution for part one
@@ -54,7 +53,7 @@ main = do
   -- example: cabal run -- day-3 2 \"./input/day-3.example\"
   -- will run part two of day three with input file ./input/day-3.example
   [part, filepath] <- getArgs
-  input <- parser <$> B.readFile filepath -- use parser <$> readFile filepath if String is better
+  input <- parser <$> readFile filepath -- use parser <$> readFile filepath if String is better
   if read @Int part == 1
     then do
       putStrLn \"solution to problem 1 is:\"
