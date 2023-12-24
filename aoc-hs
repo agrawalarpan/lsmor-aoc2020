@@ -30,12 +30,10 @@ import System.Environment (getArgs)
 - Solution should be the type of your solution. Typically is an Int, but It can be other things, like a list of numbers
          or a list of characters
 -}
-type Input    = String  -- default to Bytestring, but very likely you'll need to change it
+type Input    = String  -- default to String, but very likely you'll need to change it
 type Solution = Int
 
--- | parser transforms a raw bytestring (from your ./input/day-X.input) to your Input type. 
---   this is intended to use attoparsec for such a transformation. You can use Prelude's 
---   String if it fit better for the problem
+-- | parser transforms a raw string (from your ./input/day-X.input) to your Input type. 
 parser :: String -> Input
 parser = undefined
 
